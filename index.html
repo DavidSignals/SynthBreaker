@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynthBreaker</title>
+    <!-- Google Fonts for UI and HUD -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Outfit:wght@100;300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Main Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Start Screen Overlay -->
+    <div id="startScreen" class="overlay">
+        <h1 class="title">SYNTHBREAKER</h1>
+        <p class="subtitle pulse-text">Click anywhere to trigger the sequence</p>
+        <p class="author">By David Signals</p>
+    </div>
+
+    <!-- HUD Elements -->
+    <div id="hud" class="hud hidden">
+        <div class="hud-top">
+            <div id="menu-btn" class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="hud-bottom">
+            <div class="hud-left">
+                <div id="hud-score">SCORE: 000</div>
+                <div id="hud-multiplier">MULT: x1</div>
+            </div>
+            <div class="hud-right">
+                <div id="hud-lfo">Delay FB: 0.00</div>
+                <div id="hud-cutoff">Cutoff: 800Hz</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pauseMenu" class="overlay pause-menu hidden">
+        <h2>PAUSED</h2>
+        <div class="menu-options">
+            <button id="btn-resume">RESUME</button>
+            <button id="btn-restart">RESTART</button>
+            <button id="btn-exit">EXIT TO TITLE</button>
+        </div>
+    </div>
+
+    <!-- Level Transition Overlay -->
+    <div id="levelTransition" class="overlay hidden">
+        <h2 id="transitionText" class="title pulse-text" style="font-size: 4rem;">LEVEL 2</h2>
+    </div>
+
+    <!-- Application Entry Point -->
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

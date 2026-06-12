@@ -1,0 +1,234 @@
+:root {
+    --bg-color: #0D0D11;
+    --text-primary: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.4);
+    
+    /* Neon Accents */
+    --cyan: #00F0FF;
+    --magenta: #FF00E5;
+    --amber: #FFB300;
+    
+    /* Typography */
+    --font-display: 'Outfit', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+/* Canvas */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: radial-gradient(circle at center, rgba(13, 13, 17, 0) 0%, rgba(13, 13, 17, 0.8) 100%);
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.overlay.fade-out, .overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#levelTransition {
+    background: rgba(13, 13, 17, 0.95);
+    z-index: 15;
+}
+
+/* Typography */
+.title {
+    font-family: var(--font-display);
+    font-weight: 100;
+    font-size: 6rem;
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.1));
+    margin-bottom: 2rem;
+}
+
+.subtitle {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.author {
+    font-family: var(--font-display);
+    font-weight: 100;
+    font-size: 0.9rem;
+    letter-spacing: 0.4rem;
+    color: var(--cyan);
+    opacity: 0.6;
+    position: absolute;
+    bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* Animations */
+.pulse-text {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; filter: drop-shadow(0 0 5px var(--cyan)); }
+    100% { opacity: 0.3; }
+}
+
+/* HUD */
+.hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cyan);
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.hud.visible {
+    opacity: 0.6;
+}
+
+.hud-top {
+    padding: 2rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hud-bottom {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-left, .hud-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hud-right {
+    text-align: right;
+    color: var(--magenta);
+}
+
+/* Hamburger Menu */
+.menu-btn {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    pointer-events: auto; /* allow clicks */
+}
+
+.menu-btn span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--cyan);
+    transition: 0.3s;
+    box-shadow: 0 0 5px var(--cyan);
+}
+
+.menu-btn:hover span {
+    background-color: var(--text-primary);
+    box-shadow: 0 0 8px var(--text-primary);
+}
+
+/* Pause Menu */
+.pause-menu {
+    background: rgba(13, 13, 17, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+}
+
+.pause-menu h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    text-shadow: 0 0 15px var(--magenta);
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.menu-options button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-options button:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.05);
+}
