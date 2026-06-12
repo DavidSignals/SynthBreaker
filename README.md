@@ -46,28 +46,6 @@ The magic of SynthBreaker lies in how physical coordinates translate to sound de
 
 ---
 
-## 🚀 How to Run Locally
-
-You can run this project with any local development server.
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/synthbreaker.git
-    cd synthbreaker
-    ```
-2.  **Start a local server:**
-    If you have Python installed, you can easily spin up a server:
-    ```bash
-    python -m http.server 8000
-    ```
-    *Alternatively, you can use the VS Code "Live Server" extension or Node's `http-server`.*
-3.  **Open in your browser:**
-    Navigate to `http://localhost:8000`
-
-> ⚠️ **Note:** Modern browsers block audio context until the user interacts with the page. Click anywhere on the screen to initialize the `Tone.js` engine and start the game.
-
----
-
 ## 👨‍💻 Author
 
 **David Rábago**
