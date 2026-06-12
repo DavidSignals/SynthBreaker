@@ -75,10 +75,6 @@ You can run this project with any local development server.
 
 Passionate about bridging the gap between embedded systems, JUCE plugin development, and cutting-edge web technologies. 
 
-*   [GitHub Profile](https://github.com/yourusername)
-*   [LinkedIn](https://linkedin.com/in/yourprofile)
-*   *Based in Culiacán, Mexico | Seeking Master's opportunities in Canada 🇨🇦*
-
 ---
 
 ## 📜 License
